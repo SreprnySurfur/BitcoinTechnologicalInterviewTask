@@ -31,6 +31,16 @@ export default defineConfig({
     headless: false,
   },
 
+  /* Maximum time one test can run for. */
+  timeout: 300 * 1000,
+  expect: {
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 60000,
+  },
+
   /* Configure projects for major browsers */
   projects: [
     {

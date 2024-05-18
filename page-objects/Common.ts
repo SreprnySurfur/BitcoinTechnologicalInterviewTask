@@ -2,7 +2,7 @@ import { Page, expect } from "@playwright/test";
 import { UrlValues } from "../models/Assertions";
 
 export abstract class CommonPage {
-  public constructor(private page: Page) {}
+  public constructor(public page: Page) {}
 
   protected async visitUrl(url: string) {
     await this.page.goto(url);
@@ -16,49 +16,11 @@ export abstract class CommonPage {
     return this.page.getByTestId(id);
   }
 
-  protected async clickButton(id: string) {
-    const button = this.getButton(id);
-
-    await button.click();
-  }
-
-  protected getButton(id: string) {
-    return this.getByTestId(`${id}-button`);
-  }
-
-  protected async getAttribute(id: string, name: string) {
-    return this.getByTestId(id).getAttribute(name);
-  }
-
-  protected async clickElement(id: string) {
-    const element = this.getByTestId(id);
-
-    await element.click();
-  }
-
-  protected getInput(id: string) {
-    return this.getByTestId(`${id}-input`);
-  }
-
-  protected async clearInput(id: string) {
-    await this.getInput(id).clear();
-  }
-
-  protected async setInputValue(id: string, value: string) {
-    const input = this.getInput(id);
-
-    await input.fill(value);
-  }
-
   protected async setInputLocatorValue(id: string, value: string) {
     const input = this.getLocator(id);
 
     await input.click();
     await input.fill(value);
-  }
-
-  protected getErrorMessage(id: string) {
-    return this.getByTestId(`${id}-error`);
   }
 
   protected getLocator(id: string) {
@@ -80,7 +42,13 @@ export abstract class CommonPage {
     }
   }
 
-  public async waitForSelector(id: string){
-    return this.page.waitForSelector(id);
+  protected getByLabel(id: string) {
+    return this.page.getByLabel(id);
+  }
+
+  protected async inputLabel(id: string, value: string) {
+    const input = this.getByLabel(id);
+
+    await input.fill(value);
   }
 }

@@ -13,11 +13,10 @@ export const injectLoginPage = async ({ page }, use) =>
   await use(new LoginPage(page));
 
 class LoginPage extends CommonPage {
-  private readonly testId = {
+  private readonly selectors = {
     emailId: '[id="login_input_email"]',
     passwordId: '[id="login_input_password"]',
     loginButton: '[id="login_input_login"]',
-    windowId: '[id="__next"]',
   };
 
   public constructor(page: Page) {
@@ -30,27 +29,20 @@ class LoginPage extends CommonPage {
   }
 
   public async setEmail(email: string) {
-    await super.setInputLocatorValue(this.testId.emailId, email);
+    await super.setInputLocatorValue(this.selectors.emailId, email);
   }
 
   public async setPassword(password: string) {
-    await super.setInputLocatorValue(this.testId.passwordId, password);
+    await super.setInputLocatorValue(this.selectors.passwordId, password);
   }
 
   public async clickLogInButton() {
-    await super.clickLocator(this.testId.loginButton);
+    await super.clickLocator(this.selectors.loginButton);
   }
 
   public async verifyLoginButtonVisibility(assertion: VisibilityValues) {
     await verifyVisibility(
-      super.getLocator(this.testId.loginButton),
-      assertion
-    );
-  }
-
-  public async verifyWindowVisibility(assertion: VisibilityValues) {
-    await verifyVisibility(
-      super.getLocator(this.testId.windowId),
+      super.getLocator(this.selectors.loginButton),
       assertion
     );
   }
