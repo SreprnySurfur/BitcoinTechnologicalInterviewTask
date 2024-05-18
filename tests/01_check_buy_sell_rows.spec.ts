@@ -10,7 +10,7 @@ const test = base.extend<MyFixtures>({
   loginPage: injectLoginPage,
 });
 
-test.describe("01 ", () => {
+test.describe("01 Buy, Sell, Check expected conditions", () => {
   test("Go to URL, log in, buy BTC, buy BTC again, close Market, then Validate buy and sell amount", async ({
     dashboardPage,
     loginPage,
