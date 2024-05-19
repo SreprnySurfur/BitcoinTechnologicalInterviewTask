@@ -1,6 +1,6 @@
 # BitcoinTechnologicalInterviewTask
 
-This is repository which contains  End-To-End tests written using [Playwright](https://playwright.dev/docs/intro) and TypeScript.
+This is repository which contains End-To-End tests written using [Playwright](https://playwright.dev/docs/intro) and TypeScript.
 
 ## How to run
 
@@ -34,9 +34,9 @@ npx playwright install
 
 ### 2. Run tests
 
-Open Playwright console an run 
+Open Playwright console an run
 
-- To run all test at once using Webkit, Firefox, Chromium 
+- To run all test at once using Webkit, Firefox, Chromium
 
   ```bash
   npx playwright test
@@ -55,4 +55,3 @@ Open Playwright console an run
   ```bash
   npx playwright show-report
   ```
-

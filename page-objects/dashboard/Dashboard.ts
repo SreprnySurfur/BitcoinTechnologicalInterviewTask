@@ -21,8 +21,7 @@ class DashboardPage extends CommonPage {
     positions: {
       marketTab: "#tab-MARKET",
     },
-    rows: '.css-pru252',
-    
+    rows: ".css-pru252",
   };
 
   private readonly testIds = {
@@ -43,10 +42,10 @@ class DashboardPage extends CommonPage {
   }
 
   //I decided to do this in a not so good looking way, but this was only way that I get consistent results
-  public async getRow(amount:string, position: number){
-   const row = super.getLocator(this.selectors.rows).nth(position);
+  public async getRow(amount: string, position: number) {
+    const row = super.getLocator(this.selectors.rows).nth(position);
 
-   expect(row).toContainText(amount + " BTC");
+    expect(row).toContainText(amount + " BTC");
   }
 
   public async selectMarket() {
@@ -70,13 +69,15 @@ class DashboardPage extends CommonPage {
       .getByRole("button", { name: this.selectors.buttons.buyLong })
       .click();
 
-    const response = await this.page.waitForResponse((response) => response.url().includes("/place-order"));
-    
-     expect(response.status()).toBe(200);
+    const response = await this.page.waitForResponse((response) =>
+      response.url().includes("/place-order")
+    );
+
+    expect(response.status()).toBe(200);
   }
 
   public async checkIfClickable() {
-const locator = this.page.getByRole("button", {
+    const locator = this.page.getByRole("button", {
       name: this.selectors.buttons.buyLong,
     });
 
@@ -117,8 +118,10 @@ const locator = this.page.getByRole("button", {
   public async clickOrderHistoryMenu() {
     await this.getOrderHistoryMenu().click();
 
-    const response = await this.page.waitForResponse((response) => response.url().includes("/order-history"));
-    
+    const response = await this.page.waitForResponse((response) =>
+      response.url().includes("/order-history")
+    );
+
     expect(response.status()).toBe(200);
   }
 
