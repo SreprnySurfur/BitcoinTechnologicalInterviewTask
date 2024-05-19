@@ -1,4 +1,4 @@
-import { test as base, chromium } from "@playwright/test";
+import { test as base } from "@playwright/test";
 import { MyFixtures } from "../my-fixtures";
 import { injectLoginPage } from "../page-objects/login/Login";
 import { LOGIN_DATA } from "../constans/loginData";
