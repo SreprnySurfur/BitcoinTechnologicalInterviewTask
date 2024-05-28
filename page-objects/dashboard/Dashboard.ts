@@ -22,7 +22,11 @@ class DashboardPage extends CommonPage {
       marketTab: "#tab-MARKET",
     },
     rows: ".css-pru252",
+    rowPosition: '[class="position-row body"]',
+    rowSizeBuy: '[class="size size-buy"]',
+    positionInput: ".css-1mizem0",
   };
+  //position-row body
 
   private readonly testIds = {
     openOrders: {
@@ -43,9 +47,17 @@ class DashboardPage extends CommonPage {
 
   //I decided to do this in a not so good looking way, but this was only way that I get consistent results
   public async getRow(amount: string, position: number) {
-    const row = super.getLocator(this.selectors.rows).nth(position);
+    const row = super.getLocator(this.selectors.rows).first().getByText("date");
 
-    expect(row).toContainText(amount + " BTC");
+   await expect(row).toContainText(amount + " BTC");
+  }
+
+  public async getRowPositions(amount: string) {
+    const row = super.getLocator(this.selectors.rowPosition).nth(0).locator(this.selectors.rowSizeBuy);
+
+    console.log(row);
+
+     await expect(row).toContainText(amount);
   }
 
   public async selectMarket() {

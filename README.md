@@ -1,4 +1,4 @@
-# BitcoinTechnologicalInterviewTask
+# DietStore
 
 This is repository which contains End-To-End tests written using [Playwright](https://playwright.dev/docs/intro) and TypeScript.
 
